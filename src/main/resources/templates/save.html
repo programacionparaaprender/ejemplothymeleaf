@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Insert title here</title>
+<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, inicital-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie-edge">
+        <link rel="shortcut icon" type="image/x-icon" href="../static/favicon.ico">
+       
+        <!-- Estilos Bootstrap 4 -->
+        <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+        
+        
+        
+        <!-- Iconos fonts awesome 5 -->
+        <link rel="stylesheet" href="../static/css/fontawesome.min.css">
+        <script src="../static/js/all.js"></script> 
+</head>
+<body>
+<div class="card card-default" style="width: 58rem;margin:auto;padding:2rem;">
+
+	<div class="card-body">
+		<div>
+			<h5 class="card-title">Card title</h5>
+			<form 
+				method="POST" 
+				action="*" 
+				th:action="@{/save}"
+				th:object="${persona}">
+				<input 
+					class="form-control" 
+					th:field="*{id}"
+					type="hidden" 
+					name="id" 
+					id="id">
+				<div class="form-group">
+					<label for="nombre">Nombre:</label>
+					<input 
+						class="form-control" 
+						th:field="*{nombre}"
+						type="text" 
+						name="nombre" 
+						id="nombre">
+				</div>
+				<div class="form-group">
+					<label for="apellido">Apellido:</label>
+					<input  
+						class="form-control" 
+						th:field="*{apellido}"
+						type="text" 
+						name="apellido" 
+						id="apellido">
+				</div>
+				<div class="form-group">
+					<label for="telefono">Telefono:</label>
+					<input 
+						class="form-control" 
+						th:field="*{telefono}"
+						type="text" 
+						name="telefono" 
+						id="telefono">
+				</div>
+				<div class="form-group">
+					<label for="direccion">Dirección:</label>
+					<input 
+						class="form-control" 
+						th:field="*{direccion}"
+						type="text" 
+						name="direccion" 
+						id="direccion">
+				</div>
+				<div class="btn-group" style="margin:auto;" role="group" aria-label="Basic example">
+					<button  
+						class="btn btn-primary" 
+						type="submit">Agregar</button>
+					<button  
+						class="btn btn-warning" 
+						type="reset">Reset</button>
+					<a 
+						class="btn btn-danger" 
+						style="text-decoration: none;" 
+						href="/">Volver</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Personas</title>
+<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, inicital-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie-edge">
+        <link rel="shortcut icon" type="image/x-icon" href="../static/favicon.ico">
+       
+        <!-- Estilos Bootstrap 4 -->
+        <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+        
+        
+        
+        <!-- Iconos fonts awesome 5 -->
+        <link rel="stylesheet" href="../static/css/fontawesome.min.css">
+        <script src="../static/js/all.js"></script> 
+</head>
+<body>
+<div class="card card-default" style="width: 58rem;margin:auto;">
+
+	<div class="card-body">
+		
+			<div>
+				<a href="/save/0" class="btn btn-primary">
+				Agregar
+				</a>
+			</div>
+			<div th:if="${list.isEmpty()}">
+				<h2>No hay personas.</h2>
+			</div>
+			<div th:if="${!list.isEmpty()}">
+				<h5 class="card-title">Card title</h5>
+				
+				
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>Telefono</th>
+							<th>Dirección</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+					<tr th:each="persona: ${list}">
+						<td th:text="${persona.nombre}">
+						<td th:text="${persona.apellido}">
+						<td th:text="${persona.direccion}">
+						<td th:text="${persona.telefono}">
+						<td>
+							<div class="btn-group" style="margin:auto;" role="group" aria-label="Basic example">
+								<a th:href="@{'/save/{id}'(id=${persona.id})}" class="btn btn-success">
+									Editar
+								</a>
+								<a th:href="@{/delete/{id}(id=${persona.id})}" class="btn btn-danger">
+									Eliminar
+								</a>
+								<!-- <form th:action="@{/save/}" method="get">
+					                  <input type="hidden" name="id" th:value="${persona.id}" />
+					                  <input type="submit" value="Editar" class="btn btn-success" />
+					            </form>
+					            <form th:action="@{delete}" method="get">
+					                  <input type="hidden" name="id" th:value="${persona.id}" />
+					                  <input type="submit" value="Eliminar" class="btn btn-danger" />
+					            </form> -->
+							</div>
+						</td>
+					</tr>
+				</tbody>
+				</table>
+			</div>
+		
+	</div>
+</div>
+
+</body>
+</html>
