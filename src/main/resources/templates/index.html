@@ -49,8 +49,8 @@
 					<tr th:each="persona: ${list}">
 						<td th:text="${persona.nombre}">
 						<td th:text="${persona.apellido}">
-						<td th:text="${persona.direccion}">
 						<td th:text="${persona.telefono}">
+						<td th:text="${persona.direccion}">
 						<td>
 							<div class="btn-group" style="margin:auto;" role="group" aria-label="Basic example">
 								<a th:href="@{'/save/{id}'(id=${persona.id})}" class="btn btn-success">
