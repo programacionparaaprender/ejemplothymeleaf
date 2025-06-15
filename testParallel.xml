@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="com.example.ejemplothymelead.commons.TestEntity"/>
+      <class name="com.example.ejemplothymeleaf.controller.PersonaControllerTest"/>
+      <class name="com.example.ejemplothymeleaf.service.api.PersonaServiceAPIMockTest"/>
+      <class name="com.example.ejemplothymelead.commons.TestGenericServiceImpl"/>
+      <class name="com.example.ejemplothymeleaf.model.PersonaTest"/>
+      <class name="com.example.ejemplothymeleaf.dao.api.PersonaServiceAPITest"/>
+      <class name="com.example.ejemplothymelead.commons.GenericServiceAPITest"/>
+      <class name="com.example.ejemplothymeleaf.service.api.PersonaServiceAPITest"/>
+      <class name="com.example.ejemplothymelead.commons.GenericServiceImplTest"/>
+      <class name="com.example.ejemplothymeleaf.EjemplothymeleafApplicationTest"/>
+      <class name="com.example.ejemplothymeleaf.service.impl.PersonaServiceImplTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de Reportes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="text-center">Visualizador de Reporte de Productos</h2>
+            </div>
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <p>Haz clic en el botón para generar y visualizar el reporte:</p>
+                    <a th:href="@{/reports/generate}" class="btn btn-success btn-lg">
+                        Generar Reporte PDF
+                    </a>
+                </div>
+                
+                <!-- Opcional: Mostrar datos en la página también -->
+                <div class="mt-4" th:if="${products != null}">
+                    <h4>Datos del Reporte</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="product : ${products}">
+                                <td th:text="${product.id}"></td>
+                                <td th:text="${product.name}"></td>
+                                <td th:text="${'$' + #numbers.formatDecimal(product.price, 1, 2)}"></td>
+                                <td th:text="${product.stock}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                <small>Generado con Spring Boot, JasperReports y Thymeleaf</small>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

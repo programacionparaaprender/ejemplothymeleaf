@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .invoice-box {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table th {
+            text-align: left;
+            background: #f5f5f5;
+            padding: 10px;
+        }
+        table td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .total {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-box">
+        <div class="header">
+            <div>
+                <h1>FACTURA</h1>
+                <p>Número: <span th:text="${invoiceNumber}">INV-0000</span></p>
+            </div>
+            <div>
+                <p>Fecha: <span th:text="${#dates.format(#dates.createNow(), 'dd/MM/yyyy')}">01/01/2023</span></p>
+            </div>
+        </div>
+
+        <div>
+            <p>Cliente: <span th:text="${customerName}">Nombre del cliente</span></p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${items}">
+                    <td th:text="${item.name}">Producto</td>
+                    <td th:text="${item.quantity}">1</td>
+                    <td th:text="${'$' + #numbers.formatDecimal(item.price, 1, 2)}">$0.00</td>
+                    <td th:text="${'$' + #numbers.formatDecimal(item.price * item.quantity, 1, 2)}">$0.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="text-align: right; margin-top: 20px;">
+            <p class="total">Total: <span th:text="${'$' + #numbers.formatDecimal(total, 1, 2)}">$0.00</span></p>
+        </div>
+    </div>
+</body>
+</html>

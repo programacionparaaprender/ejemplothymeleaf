@@ -25,7 +25,7 @@ public class PersonaController {
 		model.addAttribute("list", personaServiceAPI.getAll());
 		return "index";
 	}
-	
+		
 	@GetMapping("/save/{id}")
 	public String showSave(@PathVariable("id")Long id, Model model) {
 		if(id!=null && id != 0) {
